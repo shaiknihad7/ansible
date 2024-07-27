@@ -1,6 +1,7 @@
 ---
 - name: create users on all servers
-  hosts: servers
+  hosts: all
+  serial: 1
   tasks:
      - name: user creation
        user:

@@ -1,0 +1,16 @@
+---
+- name: Install tomcat on all servers
+  hosts: all
+  tasks:
+    - name: Install tomcat10 on ubuntu servers
+      apt:
+        name: tomcat10
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "ubuntu"
+    - name: Install tomcat on RHEL servers
+      yum: 
+        name: tomcat
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "RedHat" 
